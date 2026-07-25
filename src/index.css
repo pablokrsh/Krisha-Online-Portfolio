@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 :root {
-  /* Light Theme (Default) */
+  /* Light Theme (Default) - Light Green / Khaki Dominant */
   --background: #EBFADC;
   --surface: #FFFFFF;
-  --surface-secondary: #F7FFF1;
+  --surface-secondary: #F3F7D2;
 
   --primary: #102F15;
   --secondary: #728C5A;
-  --accent: #EAF1B1;
-  --accent-light: #F3F7D2;
+  --accent: #B8D47A;
+  --accent-light: #EAF1B1;
 
   --text-primary: #102F15;
   --text-secondary: #486047;
@@ -28,22 +28,23 @@
   --icon: #728C5A;
   --icon-hover: #EAF1B1;
 
-  --navbar-bg: rgba(16,47,21,.92);
-  --navbar-text: #FFFFFF;
+  --navbar-bg: linear-gradient(180deg, #E8F5C9 0%, #D4E8A3 100%);
+  --navbar-text: #102F15;
+  --navbar-border: #B8D47A;
 
-  --btn-primary-bg: #102F15;
+  --btn-primary-bg: #5A7C3E;
   --btn-primary-text: #FFFFFF;
-  --btn-primary-hover: #1A4322;
+  --btn-primary-hover: #4A6B32;
 
   --btn-secondary-bg: transparent;
-  --btn-secondary-text: #102F15;
-  --btn-secondary-border: #102F15;
-  --btn-secondary-hover-bg: #102F15;
+  --btn-secondary-text: #5A7C3E;
+  --btn-secondary-border: #5A7C3E;
+  --btn-secondary-hover-bg: #5A7C3E;
   --btn-secondary-hover-text: #FFFFFF;
 
-  --btn-accent-bg: #EAF1B1;
+  --btn-accent-bg: #B8D47A;
   --btn-accent-text: #102F15;
-  --btn-accent-hover: #DCE88D;
+  --btn-accent-hover: #A8C46A;
 
   --input-bg: #FFFFFF;
   --input-text: #102F15;
