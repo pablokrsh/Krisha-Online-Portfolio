@@ -109,15 +109,15 @@ export default function Hero() {
       <div className="container-main px-6 md:px-12 w-full relative z-10 pt-24 pb-32 md:pt-0 md:pb-0">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-20">
 
-          {/* Profile picture - on top for mobile, right side for desktop */}
+          {/* Profile picture - on top for mobile only */}
           <div
-            className="order-1 lg:order-2 lg:absolute lg:bottom-0 lg:right-8 lg:z-10 w-[55%] sm:w-[45%] md:w-[40%] lg:w-[45%] pointer-events-none mx-auto lg:mx-0"
+            className="order-1 lg:hidden w-[55%] sm:w-[45%] md:w-[40%] pointer-events-none mx-auto"
             style={anim('scaleIn', 0.6)}
           >
             <img
               src={pfp}
               alt="Krisha Pablo"
-              className="w-full h-auto max-h-[30vh] sm:max-h-[35vh] md:max-h-[45vh] lg:max-h-[80vh] object-contain pointer-events-auto transition-all duration-400 hover:scale-[1.03]"
+              className="w-full h-auto max-h-[30vh] sm:max-h-[35vh] md:max-h-[45vh] object-contain pointer-events-auto transition-all duration-400 hover:scale-[1.03]"
               style={{
                 maskImage: 'linear-gradient(to top, transparent 0%, black 8%)',
                 WebkitMaskImage: 'linear-gradient(to top, transparent 8%, black 12%)',
@@ -156,6 +156,23 @@ export default function Hero() {
           </div>
 
         </div>
+      </div>
+
+      {/* Profile picture - bottom right for desktop */}
+      <div
+        className="hidden lg:block absolute bottom-0 right-8 z-10 pointer-events-none w-[45%]"
+        style={anim('scaleIn', 0.6)}
+      >
+        <img
+          src={pfp}
+          alt="Krisha Pablo"
+          className="w-full h-auto max-h-[80vh] object-contain pointer-events-auto transition-all duration-400 hover:scale-[1.03]"
+          style={{
+            maskImage: 'linear-gradient(to top, transparent 0%, black 8%)',
+            WebkitMaskImage: 'linear-gradient(to top, transparent 8%, black 12%)',
+            mixBlendMode: 'screen',
+          }}
+        />
       </div>
 
       {/* Scroll indicator */}
