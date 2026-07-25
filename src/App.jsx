@@ -1,18 +1,19 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import About from './components/About'
-import Education from './components/Education'
-import Skills from './components/Skills'
-import Portfolio from './components/Portfolio'
-import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import About from './pages/About'
+import Education from './pages/Education'
+import Skills from './pages/Skills'
+import Portfolio from './pages/Portfolio'
+import Contact from './pages/Contact'
 
 function App() {
   return (
     <BrowserRouter>
       <div className="min-h-screen bg-mint-100">
+        <a href="#main-content" className="skip-link">Skip to main content</a>
         <Navbar />
         <main id="main-content" role="main">
           <Routes>
