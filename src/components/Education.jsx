@@ -11,7 +11,7 @@ const timeline = [
     college: 'College of Natural Sciences (CNS)',
     location: 'La Trinidad, Benguet',
     description: 'Currently pursuing a Bachelor of Science in Environmental Science at Benguet State University under the College of Natural Sciences. Passionate about environmental sustainability, ecological conservation, and continuous learning through academic and practical experiences.',
-    icon: <FiGraduationCap size={20} />,
+    icon: <FiBookOpen size={20} />,
     highlights: ['Student ID: 2302620', 'Fourth-Year Student', 'Environmental Sustainability'],
   },
   {
