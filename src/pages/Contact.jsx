@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { FiExternalLink, FiFolder, FiSend, FiCheckCircle, FiAlertCircle } from 'react-icons/fi'
+import { FiExternalLink, FiFolder, FiSend, FiCheckCircle, FiAlertCircle, FiMapPin, FiMail, FiPhone } from 'react-icons/fi'
 import { useInView } from '../hooks/useInView'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 
