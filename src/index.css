@@ -20,6 +20,12 @@
   --radius-lg: 28px;
   --shadow: 0 15px 40px rgba(16,47,21,.15);
   --transition: 300ms cubic-bezier(.2,.8,.2,1);
+  /* Neumorphism */
+  --neo-light: #FFFFFF;
+  --neo-dark: #C7D8BC;
+  --neo-shadow: 8px 8px 16px var(--neo-dark), -8px -8px 16px var(--neo-light);
+  --neo-shadow-inset: inset 8px 8px 16px var(--neo-dark), inset -8px -8px 16px var(--neo-light);
+  --neo-shadow-pressed: inset 4px 4px 8px var(--neo-dark), inset -4px -4px 8px var(--neo-light);
 }
 
 * {
@@ -190,6 +196,26 @@ h1, h2, h3, h4, h5, h6 {
 
   .card-hover {
     @apply hover:shadow-card-hover hover:-translate-y-1.5 hover:border-lime-300/30;
+  }
+
+  /* Neumorphism cards */
+  .card-neo {
+    @apply bg-[var(--background)] rounded-[24px] p-8 transition-all duration-300 ease-out;
+    box-shadow: var(--neo-shadow);
+  }
+
+  .card-neo-hover {
+    @apply hover:-translate-y-1;
+    box-shadow: 12px 12px 24px var(--neo-dark), -12px -12px 24px var(--neo-light);
+  }
+
+  .card-neo-pressed {
+    box-shadow: var(--neo-shadow-pressed);
+  }
+
+  .card-neo-inset {
+    @apply bg-[var(--background)] rounded-[24px] p-8 transition-all duration-300 ease-out;
+    box-shadow: var(--neo-shadow-inset);
   }
 
   .glass {

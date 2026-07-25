@@ -75,7 +75,7 @@ export default function About() {
 
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           <div style={reduced ? {} : { animation: sectionInView ? 'fadeLeft 0.7s cubic-bezier(.2,.8,.2,1) 0.2s both' : 'none' }}>
-            <div className="card-base card-hover">
+            <div className="card-neo card-neo-hover">
               <h3 className="font-heading text-2xl font-semibold text-forest-900 mb-6">Personal Information</h3>
               <div className="space-y-4">
                 {personalInfo.map((info) => (
@@ -94,7 +94,7 @@ export default function About() {
           </div>
 
           <div style={reduced ? {} : { animation: sectionInView ? 'fadeRight 0.7s cubic-bezier(.2,.8,.2,1) 0.3s both' : 'none' }}>
-            <div className="card-base card-hover h-full">
+            <div className="card-neo card-neo-hover h-full">
               <h3 className="font-heading text-2xl font-semibold text-forest-900 mb-6">About Me</h3>
               <p className="font-body text-forest-900/80 leading-relaxed mb-6">
                 I am a dedicated Environmental Science student who values sustainability, creativity, and continuous growth. Alongside my academic interests, I enjoy expressing my creativity through crochet, drawing, and strategic thinking through chess. In my free time, I like watching movies and series, listening to music, and reading manhwa, manga, and manhua.

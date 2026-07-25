@@ -93,12 +93,15 @@ export default function Portfolio() {
           {filtered.map((project, index) => (
             <article
               key={project.title}
-              className="card-base card-hover group flex flex-col"
+              className="card-neo card-neo-hover group flex flex-col"
               style={reduced ? {} : {
                 animation: sectionInView
                   ? `fadeUp 0.6s cubic-bezier(.2,.8,.2,1) ${0.2 + index * 0.1}s both`
                   : 'none',
               }}
+              onMouseDown={() => {}}
+              onMouseUp={() => {}}
+              onMouseLeave={() => {}}
             >
               <div
                 className="h-48 rounded-[18px] mb-6 flex items-center justify-center overflow-hidden relative"
