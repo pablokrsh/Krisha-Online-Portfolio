@@ -12,6 +12,13 @@ const navLinks = [
   { name: 'Contact', href: '/contact', icon: FiMail },
 ]
 
+const neoShadow = `
+  8px 8px 16px var(--neo-dark),
+  -8px -8px 16px var(--neo-light),
+  inset 4px 4px 8px var(--neo-light),
+  inset -4px -4px 8px var(--neo-dark)
+`
+
 const pillShadow = `
   0 8px 32px rgba(0,0,0,0.18),
   0 4px 12px rgba(0,0,0,0.12),
