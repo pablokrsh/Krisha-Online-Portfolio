@@ -46,10 +46,10 @@ export default function Navbar() {
           </button>
           <Link
             to="/"
-            className="font-heading text-2xl font-bold text-white tracking-wide transition-colors duration-300 hover:text-lime-300"
+            className="font-heading text-2xl font-bold tracking-wide transition-colors duration-300"
             aria-label="Krisha Pablo - Home"
           >
-            KP
+            <span className="text-lime-300">Kri</span><span className="text-white">Sha</span>
           </Link>
         </div>
 

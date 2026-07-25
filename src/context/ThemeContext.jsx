@@ -5,7 +5,10 @@ const ThemeContext = createContext(null)
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') || 'light'
+      const saved = localStorage.getItem('theme')
+      if (saved) return saved
+      // Detect system preference on first visit
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
     }
     return 'light'
   })
@@ -16,6 +19,19 @@ export function ThemeProvider({ children }) {
     root.classList.add(theme)
     localStorage.setItem('theme', theme)
   }, [theme])
+
+  // Listen for system theme changes (only if user hasn't explicitly set a preference)
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    const handler = (e) => {
+      const saved = localStorage.getItem('theme')
+      if (!saved) {
+        setTheme(e.matches ? 'dark' : 'light')
+      }
+    }
+    mediaQuery.addEventListener('change', handler)
+    return () => mediaQuery.removeEventListener('change', handler)
+  }, [])
 
   const toggleTheme = useCallback(() => {
     setTheme(prev => prev === 'light' ? 'dark' : 'light')
