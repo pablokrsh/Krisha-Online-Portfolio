@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  /* Light theme (default) */
   --primary: #102F15;
   --primary-dark: #081A0D;
   --primary-light: #1A4322;
@@ -28,6 +29,28 @@
   --neo-shadow-pressed: inset 4px 4px 8px var(--neo-dark), inset -4px -4px 8px var(--neo-light);
 }
 
+/* Dark theme */
+.dark {
+  --primary: #EAF1B1;
+  --primary-dark: #F3F7D2;
+  --primary-light: #EAF1B1;
+  --secondary: #A9C08F;
+  --accent: #102F15;
+  --accent-light: #1A4322;
+  --background: #081A0D;
+  --surface: #102F15;
+  --text: #EBFADC;
+  --text-light: #A9C08F;
+  --text-white: #081A0D;
+  --border: #2E5A37;
+  /* Neumorphism dark */
+  --neo-light: #1A4322;
+  --neo-dark: #081A0D;
+  --neo-shadow: 8px 8px 16px var(--neo-dark), -8px -8px 16px var(--neo-light);
+  --neo-shadow-inset: inset 8px 8px 16px var(--neo-dark), inset -8px -8px 16px var(--neo-light);
+  --neo-shadow-pressed: inset 4px 4px 8px var(--neo-dark), inset -4px -4px 8px var(--neo-light);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -44,6 +67,7 @@ body {
   color: var(--text);
   background: var(--background);
   overflow-x: hidden;
+  transition: background-color var(--transition), color var(--transition);
 }
 
 h1, h2, h3, h4, h5, h6 {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
-import { FiMenu, FiX, FiDownload } from 'react-icons/fi'
+import { FiMenu, FiX, FiDownload, FiSun, FiMoon } from 'react-icons/fi'
 import { Link, useLocation } from 'react-router-dom'
+import { useTheme } from '../context/ThemeContext'
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -12,6 +13,7 @@ const navLinks = [
 
 export default function Navbar() {
   const location = useLocation()
+  const { theme, toggleTheme } = useTheme()
   const [mobileOpen, setMobileOpen] = useState(false)
 
   // Scroll to top on route change
@@ -33,13 +35,23 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 h-20 bg-forest-900/95 backdrop-blur-[18px] shadow-lg"
     >
       <div className="container-main h-full flex items-center justify-between px-6 md:px-12">
-        <Link
-          to="/"
-          className="font-heading text-2xl font-bold text-white tracking-wide transition-colors duration-300 hover:text-lime-300"
-          aria-label="Krisha Pablo - Home"
-        >
-          KP
-        </Link>
+        {/* Left side: Theme toggle + Logo */}
+        <div className="flex items-center gap-4">
+          <button
+            onClick={toggleTheme}
+            aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+            className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors duration-300"
+          >
+            {theme === 'light' ? <FiMoon size={20} /> : <FiSun size={20} />}
+          </button>
+          <Link
+            to="/"
+            className="font-heading text-2xl font-bold text-white tracking-wide transition-colors duration-300 hover:text-lime-300"
+            aria-label="Krisha Pablo - Home"
+          >
+            KP
+          </Link>
+        </div>
 
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
