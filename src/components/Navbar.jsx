@@ -12,14 +12,12 @@ const navLinks = [
 
 export default function Navbar() {
   const location = useLocation()
-  const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
+  // Scroll to top on route change
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    window.scrollTo(0, 0)
+  }, [location.pathname])
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
@@ -32,9 +30,7 @@ export default function Navbar() {
     <nav
       role="navigation"
       aria-label="Main navigation"
-      className={`fixed top-0 left-0 right-0 z-50 h-20 transition-all duration-300 ${
-        scrolled ? 'bg-forest-900/85 backdrop-blur-[18px] shadow-lg' : 'bg-transparent'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 h-20 bg-forest-900/95 backdrop-blur-[18px] shadow-lg"
     >
       <div className="container-main h-full flex items-center justify-between px-6 md:px-12">
         <Link
@@ -78,7 +74,7 @@ export default function Navbar() {
       </div>
 
       <div
-        className={`md:hidden glass-dark absolute top-20 left-0 right-0 border-t border-forest-700 transition-all duration-400 ${
+        className={`md:hidden bg-forest-900/95 backdrop-blur-[18px] absolute top-20 left-0 right-0 border-t border-forest-700 transition-all duration-400 ${
           mobileOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'
         }`}
       >
