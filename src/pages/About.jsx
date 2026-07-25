@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { FiCalendar, FiMapPin, FiFlag, FiUser, FiHeart } from 'react-icons/fi'
 import { useInView } from '../hooks/useInView'
 import { useReducedMotion } from '../hooks/useReducedMotion'
