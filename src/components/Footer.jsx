@@ -1,4 +1,5 @@
-import { FiFacebook, FiGithub, FiLinkedin } from 'react-icons/fi'
+import { FiFacebook, FiGithub, FiLinkedin, FiInstagram } from 'react-icons/fi'
+import { FaTiktok } from 'react-icons/fa'
 import { useInView } from '../hooks/useInView'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 
@@ -12,6 +13,8 @@ const quickLinks = [
 
 const socialLinks = [
   { icon: <FiFacebook size={20} />, href: 'https://www.facebook.com/2.krishaaa.0', label: 'Facebook' },
+  { icon: <FiInstagram size={20} />, href: 'https://www.instagram.com/ia_krsh?igsh=ZWZtNzE0bHF2ajdo', label: 'Instagram' },
+  { icon: <FaTiktok size={20} />, href: 'https://www.tiktok.com/@ia_krsh?is_from_webapp=1&sender_device=pc', label: 'TikTok' },
   { icon: <FiGithub size={20} />, href: '#', label: 'GitHub' },
   { icon: <FiLinkedin size={20} />, href: '#', label: 'LinkedIn' },
 ]
