@@ -12,23 +12,36 @@ const navLinks = [
   { name: 'Contact', href: '/contact', icon: FiMail },
 ]
 
-const neoShadow = `
-  8px 8px 16px var(--neo-dark),
-  -8px -8px 16px var(--neo-light),
-  inset 4px 4px 8px var(--neo-light),
-  inset -4px -4px 8px var(--neo-dark)
+const pillShadow = `
+  0 8px 32px rgba(0,0,0,0.18),
+  0 4px 12px rgba(0,0,0,0.12),
+  0 0 0 1px var(--border)
 `
 
-const neoShadowInner = `
-  inset 4px 4px 8px var(--neo-dark),
-  inset -4px -4px 8px var(--neo-light)
+const pillShadowHover = `
+  0 12px 40px rgba(0,0,0,0.22),
+  0 6px 16px rgba(0,0,0,0.15),
+  0 0 0 1px var(--border)
 `
 
-const neoShadowHover = `
-  12px 12px 24px var(--neo-dark),
-  -12px -12px 24px var(--neo-light),
-  inset 4px 4px 8px var(--neo-light),
-  inset -4px -4px 8px var(--neo-dark)
+const pillGlow = `
+  0 0 40px -4px var(--accent),
+  0 0 80px -12px var(--secondary)
+`
+
+const buttonShadow = `
+  0 4px 16px rgba(0,0,0,0.2),
+  0 2px 4px rgba(0,0,0,0.1)
+`
+
+const buttonShadowHover = `
+  0 8px 24px rgba(0,0,0,0.25),
+  0 4px 8px rgba(0,0,0,0.15)
+`
+
+const buttonShadowPressed = `
+  0 2px 8px rgba(0,0,0,0.2),
+  inset 0 2px 4px rgba(0,0,0,0.1)
 `
 
 export default function Navbar() {
@@ -50,17 +63,27 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full px-4 transition-all duration-300">
+      {/* Glow behind pill - contained behind */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[140%] rounded-[4rem] pointer-events-none -z-10 opacity-60 transition-all duration-500"
+        style={{
+          background: 'radial-gradient(ellipse at center, var(--accent) 0%, var(--secondary) 50%, transparent 70%)',
+          filter: 'blur(60px)',
+        }}
+      />
+
       <nav
         role="navigation"
         aria-label="Main navigation"
-        className="mx-auto flex items-center justify-between gap-4 rounded-[3rem] transition-all duration-500"
+        className="relative mx-auto flex items-center justify-between gap-4 rounded-[3rem] transition-all duration-500"
         style={{
-          background: 'var(--navbar-bg)',
+          background: 'linear-gradient(180deg, var(--surface) 0%, var(--surface-secondary) 100%)',
           backdropFilter: 'blur(20px)',
           border: '1px solid var(--border)',
-          boxShadow: neoShadow,
+          boxShadow: pillShadow,
           padding: '0.625rem 1.5rem',
-          maxWidth: '1400px',
+          maxWidth: '1300px',
+          transform: 'translateZ(0)',
         }}
       >
         {/* Left: User Avatar */}
@@ -73,6 +96,7 @@ export default function Navbar() {
               style={{
                 ringColor: 'var(--accent)',
                 objectFit: 'cover',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.15), 0 0 0 2px var(--border)',
               }}
             />
             <span className="absolute inset-0 rounded-full transition-all duration-300" style={{
@@ -87,7 +111,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Center: Navigation Links with Icons */}
+        {/* Center: Navigation Links */}
         <div className="hidden md:flex items-center gap-0.5">
           {navLinks.map((link) => {
             const Icon = link.icon
@@ -100,21 +124,23 @@ export default function Navbar() {
                 className="relative flex items-center gap-2 px-5 py-2.5 rounded-[1.5rem] transition-all duration-300 group"
                 style={{
                   color: active ? 'var(--accent)' : 'var(--navbar-text)',
-                  background: active ? 'var(--accent-light)' : 'transparent',
+                  background: active ? 'var(--accent)' : 'transparent',
                   fontWeight: active ? '600' : '500',
-                  textShadow: '0 1px 2px rgba(0,0,0,0.05)',
+                  textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+                  boxShadow: active ? '0 4px 16px rgba(0,0,0,0.2), 0 0 0 1px var(--border)' : 'none',
+                  transition: 'all 0.3s cubic-bezier(.2,.8,.2,1)',
                 }}
               >
                 <Icon
                   size={19}
                   className="transition-all duration-300 group-hover:scale-110"
-                  style={{ color: active ? 'var(--accent)' : 'var(--icon)', filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.1))' }}
+                  style={{ color: active ? 'var(--text-white)' : 'var(--icon)', filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.15))' }}
                 />
-                <span className="font-body text-sm hidden sm:inline" style={{ color: active ? 'var(--accent)' : 'var(--navbar-text)', fontWeight: active ? '600' : '500' }}>
+                <span className="font-body text-sm hidden sm:inline" style={{ color: active ? 'var(--text-white)' : 'var(--navbar-text)', fontWeight: active ? '600' : '500' }}>
                   {link.name}
                 </span>
                 {active && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full" style={{ background: 'var(--accent)', boxShadow: '0 0 8px var(--accent)' }} />
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full" style={{ background: 'var(--text-white)', boxShadow: '0 0 8px var(--accent)' }} />
                 )}
               </Link>
             )
@@ -132,14 +158,14 @@ export default function Navbar() {
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-56 pl-11 pr-4 py-2.5 text-sm rounded-[1.5rem] transition-all duration-300 focus:w-80 focus:outline-none"
+                className="w-56 sm:w-64 pl-11 pr-4 py-2.5 text-sm rounded-[1.5rem] transition-all duration-300 focus:w-80 focus:outline-none"
                 style={{
-                  background: 'var(--surface-secondary)',
+                  background: 'var(--surface)',
                   color: 'var(--text-primary)',
-                  border: '1px solid var(--border)',
+                  border: '2px solid var(--border)',
                   borderRadius: '9999px',
                   fontWeight: '500',
-                  boxShadow: 'inset 2px 2px 4px var(--neo-dark), inset -2px -2px 4px var(--neo-light)',
+                  boxShadow: 'inset 0 2px 8px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.05)',
                   transition: 'all 0.3s cubic-bezier(.2,.8,.2,1)',
                 }}
                 placeholder="Search..."
@@ -148,61 +174,55 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Theme Toggle - Skeumorphic */}
+          {/* Theme Toggle - Solid 3D */}
           <button
             onClick={toggleTheme}
             aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
-            className="relative w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-500 group"
+            className="relative w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 group"
             style={{
-              background: 'linear-gradient(145deg, var(--surface-secondary), var(--surface))',
-              border: '1px solid var(--border)',
-              boxShadow: neoShadow,
+              background: 'linear-gradient(180deg, var(--surface) 0%, var(--surface-secondary) 100%)',
+              border: '2px solid var(--border)',
+              boxShadow: buttonShadow,
               color: 'var(--icon)',
+              transformStyle: 'preserve-3d',
             }}
           >
-            <span className="relative z-10 transition-all duration-500" style={{
+            <span className="relative z-10 transition-all duration-300" style={{
               transform: theme === 'light' ? 'rotate(0deg) scale(1)' : 'rotate(180deg) scale(1)',
               color: 'var(--icon)',
-              filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))',
+              textShadow: '0 2px 4px rgba(0,0,0,0.15)',
             }}>
               {theme === 'light' ? <FiMoon size={20} /> : <FiSun size={20} />}
             </span>
             <span className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
-              background: 'linear-gradient(145deg, var(--accent), var(--secondary))',
-            }} />
-            <span className="absolute -inset-1 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
-              border: '1px solid var(--accent)',
-              filter: 'blur(8px)',
+              background: 'linear-gradient(180deg, var(--accent), var(--secondary))',
             }} />
             <span className="absolute inset-0 rounded-xl opacity-0 group-focus:opacity-100 transition-opacity duration-300" style={{
               boxShadow: '0 0 0 3px var(--accent)',
             }} />
           </button>
 
-          {/* Download CV - Icon Only */}
+          {/* Download CV - Solid 3D */}
           <a
             href="#contact"
             className="relative w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 group"
             style={{
-              background: 'linear-gradient(145deg, var(--surface-secondary), var(--surface))',
-              border: '1px solid var(--border)',
-              boxShadow: neoShadow,
+              background: 'linear-gradient(180deg, var(--surface) 0%, var(--surface-secondary) 100%)',
+              border: '2px solid var(--border)',
+              boxShadow: buttonShadow,
               color: 'var(--icon)',
+              transformStyle: 'preserve-3d',
             }}
             aria-label="Download CV"
           >
-            <FiDownload size={20} className="relative z-10 transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-1" style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))' }} />
+            <FiDownload size={20} className="relative z-10 transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-1" style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.15))' }} />
             <span className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
-              background: 'linear-gradient(145deg, var(--accent), var(--secondary))',
-            }} />
-            <span className="absolute -inset-1 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
-              border: '1px solid var(--accent)',
-              filter: 'blur(8px)',
+              background: 'linear-gradient(180deg, var(--accent), var(--secondary))',
             }} />
             <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 text-xs font-body rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200" style={{
               background: 'var(--surface)',
               color: 'var(--text-primary)',
-              border: '1px solid var(--border)',
+              border: '2px solid var(--border)',
               boxShadow: 'var(--shadow)',
               whiteSpace: 'nowrap',
               fontWeight: '500',
@@ -218,9 +238,9 @@ export default function Navbar() {
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
             style={{
-              background: 'linear-gradient(145deg, var(--surface-secondary), var(--surface))',
-              border: '1px solid var(--border)',
-              boxShadow: neoShadow,
+              background: 'linear-gradient(180deg, var(--surface) 0%, var(--surface-secondary) 100%)',
+              border: '2px solid var(--border)',
+              boxShadow: buttonShadow,
               color: 'var(--icon)',
             }}
           >
@@ -236,7 +256,7 @@ export default function Navbar() {
           background: 'var(--navbar-bg)',
           backdropFilter: 'blur(20px)',
           border: '1px solid var(--border)',
-          boxShadow: neoShadowHover,
+          boxShadow: pillShadowHover,
         }}
       >
         <div className="p-4 space-y-3">
