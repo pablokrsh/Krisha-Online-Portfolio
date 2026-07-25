@@ -12,22 +12,15 @@ const navLinks = [
   { name: 'Contact', href: '/contact', icon: FiMail },
 ]
 
-const neoShadow = `
-  8px 8px 16px var(--neo-dark),
-  -8px -8px 16px var(--neo-light),
-  inset 4px 4px 8px var(--neo-light),
-  inset -4px -4px 8px var(--neo-dark)
-`
-
 const pillShadow = `
-  0 8px 32px rgba(0,0,0,0.18),
-  0 4px 12px rgba(0,0,0,0.12),
+  0 8px 32px rgba(0,0,0,0.35),
+  0 4px 12px rgba(0,0,0,0.2),
   0 0 0 1px var(--border)
 `
 
 const pillShadowHover = `
-  0 12px 40px rgba(0,0,0,0.22),
-  0 6px 16px rgba(0,0,0,0.15),
+  0 12px 40px rgba(0,0,0,0.4),
+  0 6px 16px rgba(0,0,0,0.25),
   0 0 0 1px var(--border)
 `
 
@@ -37,18 +30,18 @@ const pillGlow = `
 `
 
 const buttonShadow = `
-  0 4px 16px rgba(0,0,0,0.2),
-  0 2px 4px rgba(0,0,0,0.1)
+  0 4px 16px rgba(0,0,0,0.35),
+  0 2px 4px rgba(0,0,0,0.2)
 `
 
 const buttonShadowHover = `
-  0 8px 24px rgba(0,0,0,0.25),
-  0 4px 8px rgba(0,0,0,0.15)
+  0 8px 24px rgba(0,0,0,0.4),
+  0 4px 8px rgba(0,0,0,0.25)
 `
 
 const buttonShadowPressed = `
-  0 2px 8px rgba(0,0,0,0.2),
-  inset 0 2px 4px rgba(0,0,0,0.1)
+  0 2px 8px rgba(0,0,0,0.3),
+  inset 0 2px 4px rgba(0,0,0,0.2)
 `
 
 export default function Navbar() {
@@ -84,7 +77,7 @@ export default function Navbar() {
         aria-label="Main navigation"
         className="relative mx-auto flex items-center justify-between gap-4 rounded-[3rem] transition-all duration-500"
         style={{
-          background: 'linear-gradient(180deg, var(--surface) 0%, var(--surface-secondary) 100%)',
+          background: 'var(--navbar-bg)',
           backdropFilter: 'blur(20px)',
           border: '1px solid var(--border)',
           boxShadow: pillShadow,
@@ -103,7 +96,7 @@ export default function Navbar() {
               style={{
                 ringColor: 'var(--accent)',
                 objectFit: 'cover',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.15), 0 0 0 2px var(--border)',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.4), 0 0 0 2px var(--border)',
               }}
             />
             <span className="absolute inset-0 rounded-full transition-all duration-300" style={{
@@ -113,8 +106,8 @@ export default function Navbar() {
           </Link>
 
           <Link to="/" className="hidden sm:flex flex-col items-start leading-tight transition-colors duration-300" aria-label="Krisha Pablo - Home">
-            <span style={{ color: 'var(--accent)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.05em', textShadow: '0 1px 2px rgba(0,0,0,0.1)' }}>KRI</span>
-            <span style={{ color: 'var(--navbar-text)', fontSize: '0.75rem', fontWeight: 500 }}>SHA</span>
+            <span style={{ color: 'var(--accent)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.05em', textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>KRI</span>
+            <span style={{ color: 'var(--navbar-text)', fontSize: '0.75rem', fontWeight: 600 }}>SHA</span>
           </Link>
         </div>
 
@@ -130,24 +123,24 @@ export default function Navbar() {
                 aria-current={active ? 'page' : undefined}
                 className="relative flex items-center gap-2 px-5 py-2.5 rounded-[1.5rem] transition-all duration-300 group"
                 style={{
-                  color: active ? 'var(--accent)' : 'var(--navbar-text)',
+                  color: active ? '#FFFFFF' : 'var(--navbar-text)',
                   background: active ? 'var(--accent)' : 'transparent',
                   fontWeight: active ? '600' : '500',
-                  textShadow: '0 1px 2px rgba(0,0,0,0.1)',
-                  boxShadow: active ? '0 4px 16px rgba(0,0,0,0.2), 0 0 0 1px var(--border)' : 'none',
+                  textShadow: '0 1px 2px rgba(0,0,0,0.3)',
+                  boxShadow: active ? '0 4px 16px rgba(0,0,0,0.3), 0 0 0 1px var(--border)' : 'none',
                   transition: 'all 0.3s cubic-bezier(.2,.8,.2,1)',
                 }}
               >
                 <Icon
                   size={19}
                   className="transition-all duration-300 group-hover:scale-110"
-                  style={{ color: active ? 'var(--text-white)' : 'var(--icon)', filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.15))' }}
+                  style={{ color: active ? '#FFFFFF' : 'var(--icon)', filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.3))' }}
                 />
-                <span className="font-body text-sm hidden sm:inline" style={{ color: active ? 'var(--text-white)' : 'var(--navbar-text)', fontWeight: active ? '600' : '500' }}>
+                <span className="font-body text-sm hidden sm:inline" style={{ color: active ? '#FFFFFF' : 'var(--navbar-text)', fontWeight: active ? '600' : '500', textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
                   {link.name}
                 </span>
                 {active && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full" style={{ background: 'var(--text-white)', boxShadow: '0 0 8px var(--accent)' }} />
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full" style={{ background: '#FFFFFF', boxShadow: '0 0 8px var(--accent)' }} />
                 )}
               </Link>
             )
@@ -159,7 +152,7 @@ export default function Navbar() {
           {/* Search Bar */}
           <div className="hidden lg:flex items-center">
             <div className="relative group">
-              <FiSearch size={18} className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none transition-all duration-300" style={{ color: 'var(--icon)', opacity: '0.7' }} />
+              <FiSearch size={18} className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none transition-all duration-300" style={{ color: 'var(--icon)', opacity: '0.8' }} />
               <input
                 type="search"
                 placeholder="Search..."
@@ -172,7 +165,7 @@ export default function Navbar() {
                   border: '2px solid var(--border)',
                   borderRadius: '9999px',
                   fontWeight: '500',
-                  boxShadow: 'inset 0 2px 8px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.05)',
+                  boxShadow: 'inset 0 2px 8px rgba(0,0,0,0.15), 0 2px 8px rgba(0,0,0,0.1)',
                   transition: 'all 0.3s cubic-bezier(.2,.8,.2,1)',
                 }}
                 placeholder="Search..."
@@ -189,7 +182,7 @@ export default function Navbar() {
             style={{
               background: 'linear-gradient(180deg, var(--surface) 0%, var(--surface-secondary) 100%)',
               border: '2px solid var(--border)',
-              boxShadow: buttonShadow,
+              boxShadow: '0 4px 16px rgba(0,0,0,0.35), 0 2px 4px rgba(0,0,0,0.2)',
               color: 'var(--icon)',
               transformStyle: 'preserve-3d',
             }}
@@ -197,7 +190,7 @@ export default function Navbar() {
             <span className="relative z-10 transition-all duration-300" style={{
               transform: theme === 'light' ? 'rotate(0deg) scale(1)' : 'rotate(180deg) scale(1)',
               color: 'var(--icon)',
-              textShadow: '0 2px 4px rgba(0,0,0,0.15)',
+              textShadow: '0 2px 4px rgba(0,0,0,0.3)',
             }}>
               {theme === 'light' ? <FiMoon size={20} /> : <FiSun size={20} />}
             </span>
@@ -216,13 +209,13 @@ export default function Navbar() {
             style={{
               background: 'linear-gradient(180deg, var(--surface) 0%, var(--surface-secondary) 100%)',
               border: '2px solid var(--border)',
-              boxShadow: buttonShadow,
+              boxShadow: '0 4px 16px rgba(0,0,0,0.35), 0 2px 4px rgba(0,0,0,0.2)',
               color: 'var(--icon)',
               transformStyle: 'preserve-3d',
             }}
             aria-label="Download CV"
           >
-            <FiDownload size={20} className="relative z-10 transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-1" style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.15))' }} />
+            <FiDownload size={20} className="relative z-10 transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-1" style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))' }} />
             <span className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
               background: 'linear-gradient(180deg, var(--accent), var(--secondary))',
             }} />
@@ -247,7 +240,7 @@ export default function Navbar() {
             style={{
               background: 'linear-gradient(180deg, var(--surface) 0%, var(--surface-secondary) 100%)',
               border: '2px solid var(--border)',
-              boxShadow: buttonShadow,
+              boxShadow: '0 4px 16px rgba(0,0,0,0.35), 0 2px 4px rgba(0,0,0,0.2)',
               color: 'var(--icon)',
             }}
           >
