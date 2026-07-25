@@ -16,7 +16,6 @@ export default function Navbar() {
   const { theme, toggleTheme } = useTheme()
   const [mobileOpen, setMobileOpen] = useState(false)
 
-  // Scroll to top on route change
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [location.pathname])
@@ -32,24 +31,27 @@ export default function Navbar() {
     <nav
       role="navigation"
       aria-label="Main navigation"
-      className="fixed top-0 left-0 right-0 z-50 h-20 bg-forest-900/95 backdrop-blur-[18px] shadow-lg"
+      className="fixed top-0 left-0 right-0 z-50 h-20 transition-all duration-300"
+      style={{ background: 'var(--navbar-bg)', backdropFilter: 'blur(18px)', boxShadow: 'var(--shadow)' }}
     >
       <div className="container-main h-full flex items-center justify-between px-6 md:px-12">
-        {/* Left side: Theme toggle + Logo */}
         <div className="flex items-center gap-4">
           <button
             onClick={toggleTheme}
             aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
-            className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors duration-300"
+            className="relative p-2 rounded-lg transition-all duration-300"
+            style={{ background: 'var(--surface-secondary)', color: 'var(--icon)' }}
           >
-            {theme === 'light' ? <FiMoon size={20} /> : <FiSun size={20} />}
+            <span className="block transition-all duration-300" style={{ transform: theme === 'light' ? 'rotate(0deg) scale(1)' : 'rotate(180deg) scale(1)' }}>
+              {theme === 'light' ? <FiMoon size={20} /> : <FiSun size={20} />}
+            </span>
           </button>
           <Link
             to="/"
             className="font-heading text-2xl font-bold tracking-wide transition-colors duration-300"
             aria-label="Krisha Pablo - Home"
           >
-            <span className="text-lime-300">Kri</span><span className="text-white">Sha</span>
+            <span style={{ color: 'var(--accent)' }}>Kri</span><span style={{ color: 'var(--navbar-text)' }}>Sha</span>
           </Link>
         </div>
 
@@ -58,10 +60,9 @@ export default function Navbar() {
             <Link
               key={link.name}
               to={link.href}
-              aria-current={isActive(link.href) ? 'page' : undefined}
-              className={`nav-underline font-body text-sm font-medium transition-colors duration-300 ${
-                isActive(link.href) ? 'text-lime-300 active' : 'text-white hover:text-sage-400'
-              }`}
+              aria-current={location.pathname === link.href ? 'page' : undefined}
+              className="nav-underline font-body text-sm font-medium transition-colors duration-300"
+              style={{ color: 'var(--navbar-text)' }}
             >
               {link.name}
             </Link>
@@ -76,19 +77,21 @@ export default function Navbar() {
         </div>
 
         <button
-          className="md:hidden text-white transition-transform duration-300 active:scale-90"
+          className="md:hidden transition-transform duration-300 active:scale-90"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
+          style={{ color: 'var(--navbar-text)' }}
         >
           {mobileOpen ? <FiX size={24} /> : <FiMenu size={24} />}
         </button>
       </div>
 
       <div
-        className={`md:hidden bg-forest-900/95 backdrop-blur-[18px] absolute top-20 left-0 right-0 border-t border-forest-700 transition-all duration-400 ${
+        className={`md:hidden absolute top-20 left-0 right-0 border-t transition-all duration-400 ${
           mobileOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'
         }`}
+        style={{ background: 'var(--navbar-bg)', backdropFilter: 'blur(18px)', borderColor: 'var(--border)' }}
       >
         <div className="flex flex-col items-center py-6 gap-4">
           {navLinks.map((link, i) => (
@@ -96,9 +99,8 @@ export default function Navbar() {
               key={link.name}
               to={link.href}
               onClick={() => setMobileOpen(false)}
-              className={`font-body text-base font-medium transition-colors duration-300 ${
-                isActive(link.href) ? 'text-lime-300' : 'text-white hover:text-sage-400'
-              }`}
+              className="font-body text-base font-medium transition-colors duration-300"
+              style={{ color: location.pathname === link.href ? 'var(--accent)' : 'var(--navbar-text)' }}
               style={{ animation: mobileOpen ? `fadeUp 0.3s ease-out ${i * 0.05}s both` : 'none' }}
             >
               {link.name}
