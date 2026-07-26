@@ -8,43 +8,43 @@
   --surface: #FFFFFF;
   --surface-secondary: #F3F7D2;
 
-  --primary: #102F15;
-  --secondary: #728C5A;
-  --accent: #B8D47A;
-  --accent-light: #EAF1B1;
+  --primary: #1A3D10;
+  --secondary: #5A7C3E;
+  --accent: #8FC44A;
+  --accent-light: #D4E8A8;
 
-  --text-primary: #102F15;
-  --text-secondary: #486047;
-  --text-muted: #6F8468;
+  --text-primary: #1A3D10;
+  --text-secondary: #3D6B2A;
+  --text-muted: #5A7C3E;
 
-  --heading: #102F15;
+  --heading: #1A3D10;
 
-  --border: #C7D8BC;
-  --border-light: rgba(16,47,21,0.08);
+  --border: #8FC44A;
+  --border-light: rgba(26,61,16,0.12);
 
-  --shadow: 0 15px 40px rgba(16,47,21,.12);
-  --shadow-hover: 0 25px 60px rgba(16,47,21,.18);
+  --shadow: 0 15px 40px rgba(26,61,16,.15);
+  --shadow-hover: 0 25px 60px rgba(26,61,16,.22);
 
-  --icon: #728C5A;
-  --icon-hover: #EAF1B1;
+  --icon: #A8C87A;
+  --icon-hover: #D4E8A8;
 
-  --navbar-bg: linear-gradient(180deg, #2D5A1A 0%, #3D6B2A 100%);
-  --navbar-text: #FFFFFF;
-  --navbar-border: #5A7C3E;
+  --navbar-bg: linear-gradient(180deg, #1A3D10 0%, #2D5A1A 100%);
+  --navbar-text: #F0E6C8;
+  --navbar-border: #6B8E4A;
 
-  --btn-primary-bg: #5A7C3E;
+  --btn-primary-bg: #4A6B32;
   --btn-primary-text: #FFFFFF;
-  --btn-primary-hover: #4A6B32;
+  --btn-primary-hover: #3D5A2A;
 
   --btn-secondary-bg: transparent;
-  --btn-secondary-text: #5A7C3E;
-  --btn-secondary-border: #5A7C3E;
-  --btn-secondary-hover-bg: #5A7C3E;
-  --btn-secondary-hover-text: #FFFFFF;
+  --btn-secondary-text: #D4E8A8;
+  --btn-secondary-border: #8FC44A;
+  --btn-secondary-hover-bg: #8FC44A;
+  --btn-secondary-hover-text: #1A3D10;
 
-  --btn-accent-bg: #B8D47A;
-  --btn-accent-text: #102F15;
-  --btn-accent-hover: #A8C46A;
+  --btn-accent-bg: #8FC44A;
+  --btn-accent-text: #1A3D10;
+  --btn-accent-hover: #7DB43A;
 
   --input-bg: #FFFFFF;
   --input-text: #102F15;

@@ -68,9 +68,9 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full px-4 transition-all duration-300">
-      {/* Subtle glow behind pill - lighter */}
+      {/* Subtle glow behind pill - lighter green */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[140%] rounded-[4rem] pointer-events-none -z-10 opacity-40 transition-all duration-700"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[140%] rounded-[4rem] pointer-events-none -z-10 opacity-35 transition-all duration-700"
         style={{
           background: 'radial-gradient(ellipse at center, var(--accent) 0%, var(--secondary) 50%, transparent 70%)',
           filter: 'blur(80px)',
@@ -132,7 +132,7 @@ export default function Navbar() {
             const Icon = link.icon
             const active = isActive(link.href)
             return (
-<Link
+              <Link
                 key={link.name}
                 to={link.href}
                 aria-current={active ? 'page' : undefined}
@@ -140,9 +140,9 @@ export default function Navbar() {
                 style={{
                   color: active ? '#FFFFFF' : 'var(--navbar-text)',
                   background: active ? 'linear-gradient(180deg, var(--secondary) 0%, var(--accent) 100%)' : 'transparent',
-                  fontWeight: active ? '600' : '500',
-                  textShadow: '0 1px 2px rgba(0,0,0,0.25)',
-                  boxShadow: active ? '0 6px 20px rgba(0,0,0,0.3), 0 0 0 1px var(--border)' : 'none',
+                  fontWeight: active ? '700' : '600',
+                  textShadow: active ? '0 2px 4px rgba(0,0,0,0.4)' : '0 1px 2px rgba(0,0,0,0.25)',
+                  boxShadow: active ? '0 8px 24px rgba(0,0,0,0.35), 0 0 0 2px var(--accent)' : 'none',
                   transition: 'all 0.3s cubic-bezier(.2,.8,.2,1)',
                   transformStyle: 'preserve-3d',
                 }}
@@ -150,11 +150,14 @@ export default function Navbar() {
                 <Icon
                   size={19}
                   className="transition-all duration-300 group-hover:scale-110"
-                  style={{ color: active ? 'var(--text-white)' : 'var(--icon)', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.25))' }}
+                  style={{ color: active ? 'var(--text-white)' : 'var(--icon)', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))' }}
                 />
-                <span className="font-body text-sm hidden sm:inline" style={{ color: active ? 'var(--text-white)' : 'var(--navbar-text)', fontWeight: active ? '600' : '500' }}>
+                <span className="font-body text-sm hidden sm:inline" style={{ color: active ? 'var(--text-white)' : 'var(--navbar-text)', fontWeight: active ? '700' : '600' }}>
                   {link.name}
                 </span>
+                {active && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full" style={{ background: 'linear-gradient(180deg, var(--secondary) 0%, var(--accent) 100%)', boxShadow: '0 0 12px var(--accent), 0 0 24px var(--secondary)' }} />
+                )}
               </Link>
             )
           })}
