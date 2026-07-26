@@ -27,24 +27,27 @@ export default function Footer() {
     reduced ? {} : { animation: inView ? `fadeUp 0.6s cubic-bezier(.2,.8,.2,1) ${delay}s both` : 'none' }
 
   return (
-    <footer ref={ref} className="bg-forest-900 text-white py-16 px-6 md:px-12" role="contentinfo">
+    <footer ref={ref} style={{ background: 'var(--el-footer-bg)', color: 'var(--el-text)' }} className="py-16 px-6 md:px-12" role="contentinfo">
       <div className="container-main">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           <div style={anim(0)}>
-            <h3 className="font-heading text-2xl font-bold mb-4">Krisha Pablo</h3>
-            <p className="font-body text-sage-400 text-sm leading-relaxed">
+            <h3 className="font-heading text-2xl font-bold mb-4" style={{ color: 'var(--el-highlight)', textShadow: '0 0 12px var(--el-highlight)' }}>Krisha Pablo</h3>
+            <p className="font-body text-sm leading-relaxed" style={{ color: 'var(--el-text-sub)' }}>
               Environmental Science Student at Benguet State University. Passionate about sustainability, creativity, and making a positive impact.
             </p>
           </div>
 
           <div style={anim(0.1)}>
-            <h4 className="font-heading text-lg font-semibold mb-4">Quick Links</h4>
+            <h4 className="font-heading text-lg font-semibold mb-4" style={{ color: 'var(--el-highlight)', textShadow: '0 0 10px var(--el-highlight)' }}>Quick Links</h4>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="font-body text-sm text-sage-400 hover:text-lime-300 transition-colors duration-300 inline-block hover:translate-x-1 transform"
+                    className="font-body text-sm transition-colors duration-300 inline-block hover:translate-x-1 transform"
+                    style={{ color: 'var(--el-text-sub)' }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = 'var(--el-highlight)'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = 'var(--el-text-sub)'}
                   >
                     {link.name}
                   </a>
@@ -54,7 +57,7 @@ export default function Footer() {
           </div>
 
           <div style={anim(0.2)}>
-            <h4 className="font-heading text-lg font-semibold mb-4">Social Links</h4>
+            <h4 className="font-heading text-lg font-semibold mb-4" style={{ color: 'var(--el-highlight)', textShadow: '0 0 10px var(--el-highlight)' }}>Social Links</h4>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
                 <a
@@ -63,7 +66,13 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Visit ${social.label} (opens in new tab)`}
-                  className="w-10 h-10 rounded-full border border-sage-600 flex items-center justify-center text-sage-400 hover:border-lime-300 hover:text-lime-300 hover:scale-110 hover:-translate-y-1 transition-all duration-300"
+                  className="w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 hover:-translate-y-1 transition-all duration-300"
+                  style={{
+                    border: '1px solid var(--el-border)',
+                    color: 'var(--el-text-sub)',
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--el-highlight)'; e.currentTarget.style.color = 'var(--el-highlight)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--el-border)'; e.currentTarget.style.color = 'var(--el-text-sub)'; }}
                 >
                   {social.icon}
                 </a>
@@ -72,8 +81,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-forest-700 pt-8 text-center">
-          <p className="font-body text-sm text-sage-500">
+        <div className="pt-8 text-center" style={{ borderTop: '1px solid var(--el-footer-border)' }}>
+          <p className="font-body text-sm" style={{ color: 'var(--el-text-sub)' }}>
             &copy; {new Date().getFullYear()} Krisha Pablo. All Rights Reserved.
           </p>
         </div>

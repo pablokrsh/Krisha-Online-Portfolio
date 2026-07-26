@@ -80,11 +80,11 @@ export default function Contact() {
     reduced ? {} : { animation: sectionInView ? `fadeUp 0.7s cubic-bezier(.2,.8,.2,1) ${delay}s both` : 'none' }
 
   return (
-    <section id="contact" className="section-padding bg-mint-100" aria-labelledby="contact-heading">
+    <section id="contact" className="section-padding" style={{ background: 'var(--el-bg)' }} aria-labelledby="contact-heading">
       <div className="container-main" ref={sectionRef}>
         <div className="text-center mb-16" style={anim(0)}>
-          <p className="font-body text-sage-600 text-sm uppercase tracking-widest mb-3">Reach Out</p>
-          <h2 id="contact-heading" className="font-heading text-4xl md:text-5xl font-semibold text-forest-900">
+          <p className="font-body text-sm uppercase tracking-widest mb-3" style={{ color: 'var(--el-text-sub)' }}>Reach Out</p>
+          <h2 id="contact-heading" className="font-heading text-4xl md:text-5xl font-semibold" style={{ color: 'var(--el-text)' }}>
             Get in Touch
           </h2>
         </div>
@@ -92,12 +92,12 @@ export default function Contact() {
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           {contactCards.map((card, i) => (
             <div key={card.title} className="card-base card-hover text-center" style={anim(0.1 + i * 0.1)}>
-              <div className="w-14 h-14 rounded-full bg-forest-900 flex items-center justify-center text-white mx-auto mb-4 transition-all duration-300 hover:scale-110 hover:bg-sage-600">
+              <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 hover:scale-110" style={{ background: 'var(--el-accent)', color: 'var(--el-card)' }}>
                 {card.icon}
               </div>
-              <h3 className="font-heading text-lg font-semibold text-forest-900 mb-2">{card.title}</h3>
+              <h3 className="font-heading text-lg font-semibold mb-2" style={{ color: 'var(--el-text)' }}>{card.title}</h3>
               {card.lines.map((line) => (
-                <p key={line} className="font-body text-sm text-forest-900/70">{line}</p>
+                <p key={line} className="font-body text-sm" style={{ color: 'var(--el-text-sub)' }}>{line}</p>
               ))}
             </div>
           ))}
@@ -106,11 +106,11 @@ export default function Contact() {
         {/* Map placeholder */}
         <div className="mb-12" style={anim(0.3)}>
           <div className="card-base overflow-hidden p-0 h-64 relative">
-            <div className="w-full h-full bg-mint-100 flex items-center justify-center">
+            <div className="w-full h-full flex items-center justify-center" style={{ background: 'var(--el-bg)' }}>
               <div className="text-center">
-                <FiMapPin size={48} className="text-sage-400 mx-auto mb-3" />
-                <p className="font-body text-sm text-sage-600">Kapangan, Benguet, Philippines</p>
-                <p className="font-body text-xs text-sage-400 mt-1">Map integration coming soon</p>
+                <FiMapPin size={48} style={{ color: 'var(--el-text-faint)' }} className="mx-auto mb-3" />
+                <p className="font-body text-sm" style={{ color: 'var(--el-text-sub)' }}>Kapangan, Benguet, Philippines</p>
+                <p className="font-body text-xs mt-1" style={{ color: 'var(--el-text-faint)' }}>Map integration coming soon</p>
               </div>
             </div>
           </div>
@@ -118,19 +118,19 @@ export default function Contact() {
 
         <div className="max-w-2xl mx-auto" style={anim(0.4)}>
           <div className="card-base card-hover">
-            <h3 className="font-heading text-xl font-semibold text-forest-900 mb-6 text-center">Send a Message</h3>
+            <h3 className="font-heading text-xl font-semibold mb-6 text-center" style={{ color: 'var(--el-text)' }}>Send a Message</h3>
 
             {submitted && (
-              <div className="mb-6 p-4 bg-lime-300/30 border border-lime-300 rounded-[14px] text-center flex items-center justify-center gap-2" style={{ animation: 'scaleIn 0.4s cubic-bezier(.2,.8,.2,1) both' }}>
-                <FiCheckCircle size={18} className="text-forest-900" />
-                <p className="font-body text-sm text-forest-900">Thank you! Your message has been sent.</p>
+              <div className="mb-6 p-4 rounded-[14px] text-center flex items-center justify-center gap-2" style={{ background: 'var(--el-highlight)', border: '1px solid var(--el-fill)', animation: 'scaleIn 0.4s cubic-bezier(.2,.8,.2,1) both' }}>
+                <FiCheckCircle size={18} style={{ color: 'var(--el-accent)' }} />
+                <p className="font-body text-sm" style={{ color: 'var(--el-accent)' }}>Thank you! Your message has been sent.</p>
               </div>
             )}
 
             <form onSubmit={handleSubmit} className="space-y-5" noValidate>
               <div className="grid md:grid-cols-2 gap-5">
                 <div>
-                  <label htmlFor="contact-name" className="font-body text-sm font-medium text-forest-900 mb-1 block">Name</label>
+                  <label htmlFor="contact-name" className="font-body text-sm font-medium mb-1 block" style={{ color: 'var(--el-text)' }}>Name</label>
                   <input
                     id="contact-name"
                     type="text"
@@ -149,7 +149,7 @@ export default function Contact() {
                   )}
                 </div>
                 <div>
-                  <label htmlFor="contact-email" className="font-body text-sm font-medium text-forest-900 mb-1 block">Email</label>
+                  <label htmlFor="contact-email" className="font-body text-sm font-medium mb-1 block" style={{ color: 'var(--el-text)' }}>Email</label>
                   <input
                     id="contact-email"
                     type="email"
@@ -169,7 +169,7 @@ export default function Contact() {
                 </div>
               </div>
               <div>
-                <label htmlFor="contact-subject" className="font-body text-sm font-medium text-forest-900 mb-1 block">Subject</label>
+                <label htmlFor="contact-subject" className="font-body text-sm font-medium mb-1 block" style={{ color: 'var(--el-text)' }}>Subject</label>
                 <input
                   id="contact-subject"
                   type="text"
@@ -188,7 +188,7 @@ export default function Contact() {
                 )}
               </div>
               <div>
-                <label htmlFor="contact-message" className="font-body text-sm font-medium text-forest-900 mb-1 block">Message</label>
+                <label htmlFor="contact-message" className="font-body text-sm font-medium mb-1 block" style={{ color: 'var(--el-text)' }}>Message</label>
                 <textarea
                   id="contact-message"
                   className={`input-base min-h-[140px] resize-y ${errors.message && touched.message ? 'input-error' : ''}`}

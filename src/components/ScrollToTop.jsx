@@ -18,11 +18,16 @@ export default function ScrollToTop() {
     <button
       onClick={scrollToTop}
       aria-label="Scroll to top"
-      className={`fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-forest-900 text-white flex items-center justify-center shadow-card transition-all duration-500 ease-out hover:bg-forest-800 hover:scale-110 hover:shadow-card-hover ${
+      className={`fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 ease-out hover:scale-110 ${
         visible
           ? 'opacity-100 translate-y-0 pointer-events-auto'
           : 'opacity-0 translate-y-4 pointer-events-none'
       }`}
+      style={{
+        background: 'var(--el-accent)',
+        color: 'var(--el-card)',
+        boxShadow: 'var(--shadow)',
+      }}
     >
       <FiArrowUp size={20} />
     </button>

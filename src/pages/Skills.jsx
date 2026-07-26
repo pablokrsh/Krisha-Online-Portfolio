@@ -2,6 +2,7 @@ import { LineChart, Line, BarChart, Bar, RadarChart, Radar, PolarGrid, PolarAngl
 import { useInView } from '../hooks/useInView'
 import { useCountUp } from '../hooks/useCountUp'
 import { useReducedMotion } from '../hooks/useReducedMotion'
+import { SectionLeaf } from '../components/SectionLeaf'
 
 const skillRadar = [
   { skill: 'Environmental Science', value: 90 },
@@ -23,11 +24,11 @@ const performanceData = [
 ]
 
 const skillDistribution = [
-  { name: 'Science', value: 35, color: '#102F15' },
-  { name: 'Design', value: 20, color: '#728C5A' },
-  { name: 'Research', value: 25, color: '#EAF1B1' },
-  { name: 'Technology', value: 15, color: '#A9C08F' },
-  { name: 'Soft Skills', value: 5, color: '#2E5A37' },
+  { name: 'Science', value: 35, color: 'var(--el-accent)' },
+  { name: 'Design', value: 20, color: 'var(--el-accent-2)' },
+  { name: 'Research', value: 25, color: 'var(--el-highlight)' },
+  { name: 'Technology', value: 15, color: 'var(--el-accent-5)' },
+  { name: 'Soft Skills', value: 5, color: 'var(--el-accent-3)' },
 ]
 
 const weeklyProgress = [
@@ -40,18 +41,18 @@ const weeklyProgress = [
   { day: 'Sun', hours: 1 },
 ]
 
-const COLORS = ['#102F15', '#728C5A', '#EAF1B1', '#A9C08F', '#2E5A37']
+const COLORS = ['var(--el-accent)', 'var(--el-accent-2)', 'var(--el-highlight)', 'var(--el-accent-5)', 'var(--el-accent-3)']
 
 const tooltipStyle = {
-  contentStyle: { background: '#fff', border: '1px solid #C7D8BC', borderRadius: '12px', fontFamily: 'Inter', fontSize: '12px', boxShadow: '0 8px 24px rgba(16,47,21,.12)' },
+  contentStyle: { background: 'var(--el-tooltip-bg)', border: '1px solid var(--el-tooltip-border)', borderRadius: '12px', fontFamily: 'Inter', fontSize: '12px', color: 'var(--el-text)', boxShadow: 'var(--el-tooltip-shadow)' },
 }
 
 function StatCard({ label, value, suffix = '', isInView, reduced }) {
   const count = useCountUp(value, 2000, true, isInView)
   return (
     <div className="card-neo card-neo-hover text-center p-6">
-      <p className="font-heading text-4xl font-bold text-forest-900">{reduced ? value : count}{suffix}</p>
-      <p className="font-body text-sm text-sage-600 mt-2">{label}</p>
+      <p className="font-heading text-4xl font-bold" style={{ color: 'var(--el-text)' }}>{reduced ? value : count}{suffix}</p>
+      <p className="font-body text-sm mt-2" style={{ color: 'var(--el-text-sub)' }}>{label}</p>
     </div>
   )
 }
@@ -63,11 +64,13 @@ export default function Skills() {
   const anim = (delay) => reduced ? {} : { animation: sectionInView ? `fadeUp 0.7s cubic-bezier(.2,.8,.2,1) ${delay}s both` : 'none' }
 
   return (
-    <section id="skills" className="section-padding bg-mint-100" aria-labelledby="skills-heading">
+    <section id="skills" className="section-padding" style={{ background: 'var(--el-bg)' }} aria-labelledby="skills-heading">
       <div className="container-main" ref={sectionRef}>
-        <div className="text-center mb-16" style={anim(0)}>
-          <p className="font-body text-sage-600 text-sm uppercase tracking-widest mb-3">Visual Stats</p>
-          <h2 id="skills-heading" className="font-heading text-4xl md:text-5xl font-semibold text-forest-900">Skills & Analytics</h2>
+        <div className="text-center mb-16 relative" style={anim(0)}>
+          <SectionLeaf side="left" delay={1} />
+          <SectionLeaf side="right" delay={0} />
+          <p className="font-body text-sm uppercase tracking-widest mb-3" style={{ color: 'var(--el-text-sub)' }}>Visual Stats</p>
+          <h2 id="skills-heading" className="font-heading text-4xl md:text-5xl font-semibold" style={{ color: 'var(--el-text)' }}>Skills & Analytics</h2>
         </div>
 
         <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
@@ -79,31 +82,31 @@ export default function Skills() {
 
         <div className="grid md:grid-cols-2 gap-8 mb-8">
           <div className="card-neo card-neo-hover" style={anim(0.1)}>
-            <h3 className="font-heading text-xl font-semibold text-forest-900 mb-4">Skill Proficiency</h3>
-            <p className="font-body text-sm text-sage-600 mb-4">Radar overview of core competencies</p>
+            <h3 className="font-heading text-xl font-semibold mb-4" style={{ color: 'var(--el-text)' }}>Skill Proficiency</h3>
+            <p className="font-body text-sm mb-4" style={{ color: 'var(--el-text-sub)' }}>Radar overview of core competencies</p>
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <RadarChart data={skillRadar}>
-                  <PolarGrid stroke="#C7D8BC" />
-                  <PolarAngleAxis dataKey="skill" tick={{ fontSize: 11, fill: '#102F15', fontFamily: 'Inter' }} />
-                  <PolarRadiusAxis angle={90} domain={[0, 100]} tick={{ fontSize: 10, fill: '#728C5A' }} />
-                  <Radar name="Skills" dataKey="value" stroke="#102F15" fill="#728C5A" fillOpacity={0.3} strokeWidth={2} />
+                  <PolarGrid stroke="var(--el-grid)" />
+                  <PolarAngleAxis dataKey="skill" tick={{ fontSize: 11, fill: 'var(--el-text)', fontFamily: 'Inter' }} />
+                  <PolarRadiusAxis angle={90} domain={[0, 100]} tick={{ fontSize: 10, fill: 'var(--el-text-sub)' }} />
+                  <Radar name="Skills" dataKey="value" stroke="var(--el-accent)" fill="var(--el-accent-2)" fillOpacity={0.3} strokeWidth={2} />
                 </RadarChart>
               </ResponsiveContainer>
             </div>
           </div>
 
           <div className="card-neo card-neo-hover" style={anim(0.2)}>
-            <h3 className="font-heading text-xl font-semibold text-forest-900 mb-4">Academic Performance</h3>
-            <p className="font-body text-sm text-sage-600 mb-4">GPA trend across semesters</p>
+            <h3 className="font-heading text-xl font-semibold mb-4" style={{ color: 'var(--el-text)' }}>Academic Performance</h3>
+            <p className="font-body text-sm mb-4" style={{ color: 'var(--el-text-sub)' }}>GPA trend across semesters</p>
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={performanceData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#C7D8BC" />
-                  <XAxis dataKey="semester" tick={{ fontSize: 11, fill: '#102F15', fontFamily: 'Inter' }} />
-                  <YAxis domain={[1, 2]} reversed tick={{ fontSize: 11, fill: '#728C5A', fontFamily: 'Inter' }} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="var(--el-grid)" />
+                  <XAxis dataKey="semester" tick={{ fontSize: 11, fill: 'var(--el-text)', fontFamily: 'Inter' }} />
+                  <YAxis domain={[1, 2]} reversed tick={{ fontSize: 11, fill: 'var(--el-text-sub)', fontFamily: 'Inter' }} />
                   <Tooltip {...tooltipStyle} />
-                  <Line type="monotone" dataKey="gpa" stroke="#102F15" strokeWidth={3} dot={{ fill: '#EAF1B1', strokeWidth: 2, r: 5 }} activeDot={{ r: 7, fill: '#728C5A' }} />
+                  <Line type="monotone" dataKey="gpa" stroke="var(--el-accent)" strokeWidth={3} dot={{ fill: 'var(--el-highlight)', strokeWidth: 2, r: 5 }} activeDot={{ r: 7, fill: 'var(--el-accent-2)' }} />
                 </LineChart>
               </ResponsiveContainer>
             </div>
@@ -112,8 +115,8 @@ export default function Skills() {
 
         <div className="grid md:grid-cols-2 gap-8 mb-8">
           <div className="card-neo card-neo-hover" style={anim(0.3)}>
-            <h3 className="font-heading text-xl font-semibold text-forest-900 mb-4">Knowledge Distribution</h3>
-            <p className="font-body text-sm text-sage-600 mb-4">Breakdown of skill areas</p>
+            <h3 className="font-heading text-xl font-semibold mb-4" style={{ color: 'var(--el-text)' }}>Knowledge Distribution</h3>
+            <p className="font-body text-sm mb-4" style={{ color: 'var(--el-text-sub)' }}>Breakdown of skill areas</p>
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
@@ -121,24 +124,24 @@ export default function Skills() {
                     {skillDistribution.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)}
                   </Pie>
                   <Tooltip {...tooltipStyle} />
-                  <Legend formatter={(value) => <span style={{ fontFamily: 'Inter', fontSize: '12px', color: '#102F15' }}>{value}</span>} />
+                  <Legend formatter={(value) => <span style={{ fontFamily: 'Inter', fontSize: '12px', color: 'var(--el-text)' }}>{value}</span>} />
                 </PieChart>
               </ResponsiveContainer>
             </div>
           </div>
 
           <div className="card-neo card-neo-hover" style={anim(0.4)}>
-            <h3 className="font-heading text-xl font-semibold text-forest-900 mb-4">Weekly Study Hours</h3>
-            <p className="font-body text-sm text-sage-600 mb-4">Average study time per day</p>
+            <h3 className="font-heading text-xl font-semibold mb-4" style={{ color: 'var(--el-text)' }}>Weekly Study Hours</h3>
+            <p className="font-body text-sm mb-4" style={{ color: 'var(--el-text-sub)' }}>Average study time per day</p>
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={weeklyProgress} barSize={32}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#C7D8BC" />
-                  <XAxis dataKey="day" tick={{ fontSize: 11, fill: '#102F15', fontFamily: 'Inter' }} />
-                  <YAxis tick={{ fontSize: 11, fill: '#728C5A', fontFamily: 'Inter' }} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="var(--el-grid)" />
+                  <XAxis dataKey="day" tick={{ fontSize: 11, fill: 'var(--el-text)', fontFamily: 'Inter' }} />
+                  <YAxis tick={{ fontSize: 11, fill: 'var(--el-text-sub)', fontFamily: 'Inter' }} />
                   <Tooltip {...tooltipStyle} />
                   <Bar dataKey="hours" radius={[8, 8, 0, 0]}>
-                    {weeklyProgress.map((entry, index) => <Cell key={`cell-${index}`} fill={index === 4 ? '#EAF1B1' : '#102F15'} />)}
+                    {weeklyProgress.map((entry, index) => <Cell key={`cell-${index}`} fill={index === 4 ? 'var(--el-highlight)' : 'var(--el-accent)'} />)}
                   </Bar>
                 </BarChart>
               </ResponsiveContainer>
@@ -147,22 +150,22 @@ export default function Skills() {
         </div>
 
         <div className="card-neo card-neo-hover" style={anim(0.5)}>
-          <h3 className="font-heading text-xl font-semibold text-forest-900 mb-4">Credit Load Over Time</h3>
-          <p className="font-body text-sm text-sage-600 mb-4">Number of credits per semester</p>
+          <h3 className="font-heading text-xl font-semibold mb-4" style={{ color: 'var(--el-text)' }}>Credit Load Over Time</h3>
+          <p className="font-body text-sm mb-4" style={{ color: 'var(--el-text-sub)' }}>Number of credits per semester</p>
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={performanceData}>
                 <defs>
                   <linearGradient id="colorCredits" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#728C5A" stopOpacity={0.4} />
-                    <stop offset="95%" stopColor="#728C5A" stopOpacity={0} />
+                    <stop offset="5%" stopColor="var(--el-accent-2)" stopOpacity={0.4} />
+                    <stop offset="95%" stopColor="var(--el-accent-2)" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#C7D8BC" />
-                <XAxis dataKey="semester" tick={{ fontSize: 11, fill: '#102F15', fontFamily: 'Inter' }} />
-                <YAxis tick={{ fontSize: 11, fill: '#728C5A', fontFamily: 'Inter' }} />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--el-grid)" />
+                <XAxis dataKey="semester" tick={{ fontSize: 11, fill: 'var(--el-text)', fontFamily: 'Inter' }} />
+                <YAxis tick={{ fontSize: 11, fill: 'var(--el-text-sub)', fontFamily: 'Inter' }} />
                 <Tooltip {...tooltipStyle} />
-                <Area type="monotone" dataKey="credits" stroke="#102F15" strokeWidth={2} fill="url(#colorCredits)" />
+                <Area type="monotone" dataKey="credits" stroke="var(--el-accent)" strokeWidth={2} fill="url(#colorCredits)" />
               </AreaChart>
             </ResponsiveContainer>
           </div>

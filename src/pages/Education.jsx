@@ -1,6 +1,7 @@
 import { FiBookOpen, FiAward, FiTarget, FiMapPin } from 'react-icons/fi'
 import { useInView } from '../hooks/useInView'
 import { useReducedMotion } from '../hooks/useReducedMotion'
+import { SectionLeaf } from '../components/SectionLeaf'
 
 const timeline = [
   {
@@ -40,18 +41,18 @@ function TimelineItem({ item, index, reduced }) {
   return (
     <div ref={ref} className="relative flex items-start gap-6" style={reduced ? {} : { animation: inView ? `fadeUp 0.7s cubic-bezier(.2,.8,.2,1) ${index * 0.15}s both` : 'none' }}>
       <div className="relative flex-shrink-0 w-6 z-10">
-        <div className="absolute top-0 bottom-0 left-2.5 w-0.5 bg-forest-900/10" />
-        <div className="relative w-12 h-12 rounded-full bg-forest-900 flex items-center justify-center text-white transition-all duration-500 hover:scale-125 hover:bg-sage-600">{item.icon}</div>
+        <div className="absolute top-0 bottom-0 left-2.5 w-0.5" style={{ background: 'var(--el-track)' }} />
+        <div className="relative w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 hover:scale-125" style={{ background: 'var(--el-accent)', color: 'var(--el-card)' }}>{item.icon}</div>
       </div>
       <div className="flex-1 min-w-0">
         <div className="card-neo card-neo-hover p-6">
-          <span className="font-body text-xs font-medium text-sage-600 uppercase tracking-wider">{item.year}</span>
-          <h3 className="font-heading text-xl font-semibold text-forest-900 mt-1 mb-1">{item.title}</h3>
-          <p className="font-body text-sm text-sage-600 mb-1">{item.institution}</p>
-          {item.college && <p className="font-body text-xs text-sage-500 flex items-center gap-1 mb-2"><FiMapPin size={10} /> {item.college}</p>}
-          <p className="font-body text-xs text-sage-500 flex items-center gap-1 mb-4"><FiMapPin size={10} /> {item.location}</p>
-          <p className="font-body text-sm text-forest-900/70 mb-4">{item.description}</p>
-          <div className="flex flex-wrap gap-2">{item.highlights.map((h) => (<span key={h} className="px-3 py-1 bg-mint-100 text-forest-900 text-xs font-body rounded-full transition-colors duration-300 hover:bg-lime-300/40">{h}</span>))}</div>
+          <span className="font-body text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--el-text-sub)' }}>{item.year}</span>
+          <h3 className="font-heading text-xl font-semibold mt-1 mb-1" style={{ color: 'var(--el-text)' }}>{item.title}</h3>
+          <p className="font-body text-sm mb-1" style={{ color: 'var(--el-text-sub)' }}>{item.institution}</p>
+          {item.college && <p className="font-body text-xs flex items-center gap-1 mb-2" style={{ color: 'var(--el-text-muted)' }}><FiMapPin size={10} /> {item.college}</p>}
+          <p className="font-body text-xs flex items-center gap-1 mb-4" style={{ color: 'var(--el-text-muted)' }}><FiMapPin size={10} /> {item.location}</p>
+          <p className="font-body text-sm mb-4" style={{ color: 'var(--el-text-sub)' }}>{item.description}</p>
+          <div className="flex flex-wrap gap-2">{item.highlights.map((h) => (<span key={h} className="px-3 py-1 text-xs font-body rounded-full transition-colors duration-300" style={{ background: 'var(--el-track)', color: 'var(--el-text)' }}>{h}</span>))}</div>
         </div>
       </div>
     </div>
@@ -64,15 +65,17 @@ export default function Education() {
   const anim = (delay) => reduced ? {} : { animation: sectionInView ? `fadeUp 0.7s cubic-bezier(.2,.8,.2,1) ${delay}s both` : 'none' }
 
   return (
-    <section id="education" className="section-padding bg-mint-50" aria-labelledby="education-heading">
+    <section id="education" className="section-padding" style={{ background: 'var(--el-bg-alt)' }} aria-labelledby="education-heading">
       <div className="container-main" ref={sectionRef}>
-        <div className="text-center mb-16" style={anim(0)}>
-          <p className="font-body text-sage-600 text-sm uppercase tracking-widest mb-3">My Journey</p>
-          <h2 id="education-heading" className="font-heading text-4xl md:text-5xl font-semibold text-forest-900">Education</h2>
+        <div className="text-center mb-16 relative" style={anim(0)}>
+          <SectionLeaf side="left" delay={0.5} />
+          <SectionLeaf side="right" delay={2} />
+          <p className="font-body text-sm uppercase tracking-widest mb-3" style={{ color: 'var(--el-text-sub)' }}>My Journey</p>
+          <h2 id="education-heading" className="font-heading text-4xl md:text-5xl font-semibold" style={{ color: 'var(--el-text)' }}>Education</h2>
         </div>
 
         <div className="relative max-w-3xl mx-auto">
-          <div className="absolute top-0 bottom-0 left-[30px] w-0.5 bg-forest-900/10" />
+          <div className="absolute top-0 bottom-0 left-[30px] w-0.5" style={{ background: 'var(--el-track)' }} />
           <div className="space-y-10">
             {timeline.map((item, index) => <TimelineItem key={index} item={item} index={index} reduced={reduced} />)}
           </div>

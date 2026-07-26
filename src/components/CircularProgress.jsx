@@ -17,7 +17,7 @@ export default function CircularProgress({ value, size = 100, strokeWidth = 8, l
             cy={size / 2}
             r={radius}
             fill="none"
-            stroke="#C7D8BC"
+            stroke="var(--el-track)"
             strokeWidth={strokeWidth}
           />
           <circle
@@ -25,7 +25,7 @@ export default function CircularProgress({ value, size = 100, strokeWidth = 8, l
             cy={size / 2}
             r={radius}
             fill="none"
-            stroke="#728C5A"
+            stroke="var(--el-fill)"
             strokeWidth={strokeWidth}
             strokeLinecap="round"
             strokeDasharray={circumference}
@@ -36,11 +36,11 @@ export default function CircularProgress({ value, size = 100, strokeWidth = 8, l
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="font-body text-lg font-semibold text-forest-900">{count}%</span>
+          <span className="font-body text-lg font-semibold" style={{ color: 'var(--el-text)' }}>{count}%</span>
         </div>
       </div>
       {label && (
-        <span className="font-body text-xs font-medium text-sage-600 text-center">{label}</span>
+        <span className="font-body text-xs font-medium text-center" style={{ color: 'var(--el-text-sub)' }}>{label}</span>
       )}
     </div>
   )
