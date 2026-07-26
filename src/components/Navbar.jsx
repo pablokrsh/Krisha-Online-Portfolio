@@ -132,14 +132,14 @@ export default function Navbar() {
             const Icon = link.icon
             const active = isActive(link.href)
             return (
-              <Link
+<Link
                 key={link.name}
                 to={link.href}
                 aria-current={active ? 'page' : undefined}
                 className="relative flex items-center gap-2 px-5 py-2.5 rounded-[1.5rem] transition-all duration-300 group"
                 style={{
-                  color: active ? 'var(--text-white)' : 'var(--navbar-text)',
-                  background: active ? 'linear-gradient(180deg, var(--accent) 0%, var(--secondary) 100%)' : 'transparent',
+                  color: active ? '#FFFFFF' : 'var(--navbar-text)',
+                  background: active ? 'linear-gradient(180deg, var(--secondary) 0%, var(--accent) 100%)' : 'transparent',
                   fontWeight: active ? '600' : '500',
                   textShadow: '0 1px 2px rgba(0,0,0,0.25)',
                   boxShadow: active ? '0 6px 20px rgba(0,0,0,0.3), 0 0 0 1px var(--border)' : 'none',
@@ -155,9 +155,6 @@ export default function Navbar() {
                 <span className="font-body text-sm hidden sm:inline" style={{ color: active ? 'var(--text-white)' : 'var(--navbar-text)', fontWeight: active ? '600' : '500' }}>
                   {link.name}
                 </span>
-                {active && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full" style={{ background: 'var(--text-white)', boxShadow: '0 0 10px var(--accent)' }} />
-                )}
               </Link>
             )
           })}
