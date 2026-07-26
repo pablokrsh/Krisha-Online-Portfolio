@@ -25,12 +25,12 @@
   --shadow: 0 15px 40px rgba(26,61,16,.15);
   --shadow-hover: 0 25px 60px rgba(26,61,16,.22);
 
-  --icon: #A8C87A;
+  --icon: #5A7C3E;
   --icon-hover: #D4E8A8;
 
-  --navbar-bg: linear-gradient(180deg, #1A3D10 0%, #2D5A1A 100%);
-  --navbar-text: #F0E6C8;
-  --navbar-border: #6B8E4A;
+  --navbar-bg: linear-gradient(180deg, #E8F5C9 0%, #D4E8A3 100%);
+  --navbar-text: #1A3D10;
+  --navbar-border: #8FC44A;
 
   --btn-primary-bg: #4A6B32;
   --btn-primary-text: #FFFFFF;

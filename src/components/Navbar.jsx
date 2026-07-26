@@ -13,14 +13,14 @@ const navLinks = [
 ]
 
 const pillShadow = `
-  0 8px 32px rgba(0,0,0,0.25),
-  0 4px 12px rgba(0,0,0,0.18),
-  0 0 0 1px rgba(255,255,255,0.08)
+  0 8px 32px rgba(0,0,0,0.15),
+  0 4px 12px rgba(0,0,0,0.12),
+  0 0 0 1px var(--border)
 `
 
 const pillShadowHover = `
-  0 16px 48px rgba(0,0,0,0.35),
-  0 8px 24px rgba(0,0,0,0.22),
+  0 16px 48px rgba(0,0,0,0.25),
+  0 8px 24px rgba(0,0,0,0.2),
   0 0 0 1px var(--border)
 `
 
@@ -30,23 +30,23 @@ const pillGlow = `
 `
 
 const buttonShadow = `
-  0 4px 16px rgba(0,0,0,0.3),
-  0 2px 4px rgba(0,0,0,0.18)
+  0 4px 16px rgba(0,0,0,0.2),
+  0 2px 4px rgba(0,0,0,0.12)
 `
 
 const buttonShadowHover = `
-  0 8px 24px rgba(0,0,0,0.35),
-  0 4px 8px rgba(0,0,0,0.2)
+  0 8px 24px rgba(0,0,0,0.25),
+  0 4px 8px rgba(0,0,0,0.18)
 `
 
 const buttonShadowPressed = `
-  0 2px 8px rgba(0,0,0,0.25),
-  inset 0 2px 4px rgba(0,0,0,0.15)
+  0 2px 8px rgba(0,0,0,0.2),
+  inset 0 2px 4px rgba(0,0,0,0.1)
 `
 
 const pillInnerShadow = `
-  inset 0 2px 4px rgba(255,255,255,0.15),
-  inset 0 -2px 4px rgba(0,0,0,0.15)
+  inset 0 2px 4px rgba(255,255,255,0.3),
+  inset 0 -2px 4px rgba(0,0,0,0.1)
 `
 
 export default function Navbar() {
@@ -68,9 +68,9 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full px-4 transition-all duration-300">
-      {/* Subtle glow behind pill - lighter green */}
+      {/* Subtle glow behind pill - light green */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[140%] rounded-[4rem] pointer-events-none -z-10 opacity-35 transition-all duration-700"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[140%] rounded-[4rem] pointer-events-none -z-10 opacity-45 transition-all duration-700"
         style={{
           background: 'radial-gradient(ellipse at center, var(--accent) 0%, var(--secondary) 50%, transparent 70%)',
           filter: 'blur(80px)',
@@ -111,7 +111,7 @@ export default function Navbar() {
               style={{
                 ringColor: 'var(--accent)',
                 objectFit: 'cover',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.3), 0 0 0 2px var(--border)',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.2), 0 0 0 2px var(--border)',
               }}
             />
             <span className="absolute inset-0 rounded-full transition-all duration-300" style={{
@@ -121,7 +121,7 @@ export default function Navbar() {
           </Link>
 
           <Link to="/" className="hidden sm:flex flex-col items-start leading-tight transition-colors duration-300" aria-label="Krisha Pablo - Home">
-            <span style={{ color: 'var(--accent)', fontSize: '0.75rem', fontWeight: '700', letterSpacing: '0.05em', textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>KRI</span>
+            <span style={{ color: 'var(--accent)', fontSize: '0.75rem', fontWeight: '700', letterSpacing: '0.05em', textShadow: '0 1px 2px rgba(0,0,0,0.2)' }}>KRI</span>
             <span style={{ color: 'var(--navbar-text)', fontSize: '0.75rem', fontWeight: '500' }}>SHA</span>
           </Link>
         </div>
@@ -138,11 +138,11 @@ export default function Navbar() {
                 aria-current={active ? 'page' : undefined}
                 className="relative flex items-center gap-2 px-5 py-2.5 rounded-[1.5rem] transition-all duration-300 group"
                 style={{
-                  color: active ? '#FFFFFF' : 'var(--navbar-text)',
-                  background: active ? 'linear-gradient(180deg, var(--secondary) 0%, var(--accent) 100%)' : 'transparent',
+                  color: active ? '#1A3D10' : 'var(--navbar-text)',
+                  background: active ? 'linear-gradient(180deg, var(--accent) 0%, var(--secondary) 100%)' : 'transparent',
                   fontWeight: active ? '700' : '600',
-                  textShadow: active ? '0 2px 4px rgba(0,0,0,0.4)' : '0 1px 2px rgba(0,0,0,0.25)',
-                  boxShadow: active ? '0 8px 24px rgba(0,0,0,0.35), 0 0 0 2px var(--accent)' : 'none',
+                  textShadow: active ? '0 2px 4px rgba(0,0,0,0.2)' : '0 1px 2px rgba(0,0,0,0.15)',
+                  boxShadow: active ? '0 8px 24px rgba(0,0,0,0.2), 0 0 0 2px var(--accent)' : 'none',
                   transition: 'all 0.3s cubic-bezier(.2,.8,.2,1)',
                   transformStyle: 'preserve-3d',
                 }}
@@ -150,9 +150,9 @@ export default function Navbar() {
                 <Icon
                   size={19}
                   className="transition-all duration-300 group-hover:scale-110"
-                  style={{ color: active ? 'var(--text-white)' : 'var(--icon)', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))' }}
+                  style={{ color: active ? '#1A3D10' : 'var(--icon)', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))' }}
                 />
-                <span className="font-body text-sm hidden sm:inline" style={{ color: active ? 'var(--text-white)' : 'var(--navbar-text)', fontWeight: active ? '700' : '600' }}>
+                <span className="font-body text-sm hidden sm:inline" style={{ color: active ? '#1A3D10' : 'var(--navbar-text)', fontWeight: active ? '700' : '600' }}>
                   {link.name}
                 </span>
                 {active && (
@@ -181,7 +181,7 @@ export default function Navbar() {
                   border: '2px solid var(--border)',
                   borderRadius: '9999px',
                   fontWeight: '500',
-                  boxShadow: 'inset 0 2px 8px rgba(0,0,0,0.15), 0 2px 8px rgba(0,0,0,0.08)',
+                  boxShadow: 'inset 0 2px 8px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.05)',
                   transition: 'all 0.3s cubic-bezier(.2,.8,.2,1)',
                 }}
                 placeholder="Search..."
@@ -198,7 +198,7 @@ export default function Navbar() {
             style={{
               background: 'linear-gradient(180deg, var(--surface) 0%, var(--surface-secondary) 100%)',
               border: '2px solid var(--border)',
-              boxShadow: '0 4px 16px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.18)',
+              boxShadow: '0 4px 16px rgba(0,0,0,0.2), 0 2px 4px rgba(0,0,0,0.12)',
               color: 'var(--icon)',
               transformStyle: 'preserve-3d',
             }}
@@ -206,7 +206,7 @@ export default function Navbar() {
             <span className="relative z-10 transition-all duration-300" style={{
               transform: theme === 'light' ? 'rotate(0deg) scale(1)' : 'rotate(180deg) scale(1)',
               color: 'var(--icon)',
-              textShadow: '0 2px 4px rgba(0,0,0,0.2)',
+              textShadow: '0 2px 4px rgba(0,0,0,0.15)',
             }}>
               {theme === 'light' ? <FiMoon size={20} /> : <FiSun size={20} />}
             </span>
@@ -225,13 +225,13 @@ export default function Navbar() {
             style={{
               background: 'linear-gradient(180deg, var(--surface) 0%, var(--surface-secondary) 100%)',
               border: '2px solid var(--border)',
-              boxShadow: '0 4px 16px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.18)',
+              boxShadow: '0 4px 16px rgba(0,0,0,0.2), 0 2px 4px rgba(0,0,0,0.12)',
               color: 'var(--icon)',
               transformStyle: 'preserve-3d',
             }}
             aria-label="Download CV"
           >
-            <FiDownload size={20} className="relative z-10 transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-1" style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))' }} />
+            <FiDownload size={20} className="relative z-10 transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-1" style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.15))' }} />
             <span className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
               background: 'linear-gradient(180deg, var(--accent), var(--secondary))',
             }} />
@@ -256,7 +256,7 @@ export default function Navbar() {
             style={{
               background: 'linear-gradient(180deg, var(--surface) 0%, var(--surface-secondary) 100%)',
               border: '2px solid var(--border)',
-              boxShadow: '0 4px 16px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.18)',
+              boxShadow: '0 4px 16px rgba(0,0,0,0.2), 0 2px 4px rgba(0,0,0,0.12)',
               color: 'var(--icon)',
             }}
           >
@@ -328,7 +328,7 @@ export default function Navbar() {
                 style={{
                   background: 'linear-gradient(145deg, var(--surface-secondary), var(--surface))',
                   border: '1px solid var(--border)',
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.2), 0 2px 4px rgba(0,0,0,0.1)',
+                  boxShadow: '0 4px 16px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.08)',
                   color: 'var(--icon)',
                 }}
               >
@@ -341,7 +341,7 @@ export default function Navbar() {
                 style={{
                   background: 'linear-gradient(145deg, var(--surface-secondary), var(--surface))',
                   border: '1px solid var(--border)',
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.2), 0 2px 4px rgba(0,0,0,0.1)',
+                  boxShadow: '0 4px 16px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.08)',
                   color: 'var(--icon)',
                 }}
                 aria-label="Download CV"
